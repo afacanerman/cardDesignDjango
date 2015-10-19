@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <script type="text/javascript" src="{% static "js/cartdesign.js" %}"></script>
+</head>
+
+<body>
+    {% csrf_token %}
+    <div class="card-design">
+        <div id="options-area"></div>
+        <div class="demoArea">
+            <div id="canvasArea" style="border:solid 1px black; display: inline-block;position: relative;" oncontextmenu="return false"></div>
+            <div id="endButtonsArea"></div>
+        </div>
+    </div>
+    <script id="cardDesignerScript">
+    var cardDesigner = new CardDesign({
+        canvasId: "canvasArea",
+        endButtonsId: "endButtonsArea",
+        width: 750,
+        height: 500,
+        optionAreaId: "options-area",
+        data: {
+            front: '{"objects":[{"type":"rect","originX":"left","originY":"top","left":-21.33,"top":-13,"width":50,"height":50,"fill":"#920a17","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":14.38,"scaleY":12.02,"angle":0,"flipX":false,"flipY":false,"opacity":0.8,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","transformMatrix":null,"rx":0,"ry":0},{"type":"text","originX":"left","originY":"top","left":290,"top":243,"width":236.78,"height":93.07,"fill":"#b5f5d7","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":0.5,"scaleY":0.5,"angle":7,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","transformMatrix":null,"text":"Ön Yüz","fontSize":71,"fontWeight":"","fontFamily":"helvetica","fontStyle":"","lineHeight":1.16,"textDecoration":"","textAlign":"left","textBackgroundColor":""}],"background":""}',
+            back: '{"objects":[{"type":"rect","originX":"left","originY":"top","left":-21.33,"top":-13,"width":50,"height":50,"fill":"#920a17","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":14.38,"scaleY":12.02,"angle":0,"flipX":false,"flipY":false,"opacity":0.8,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","transformMatrix":null,"rx":0,"ry":0},{"type":"text","originX":"left","originY":"top","left":290,"top":243,"width":288.06,"height":93.07,"fill":"#b5f5d7","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":0.5,"scaleY":0.5,"angle":7,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","transformMatrix":null,"text":"Arka Yüz","fontSize":71,"fontWeight":"","fontFamily":"helvetica","fontStyle":"","lineHeight":1.16,"textDecoration":"","textAlign":"left","textBackgroundColor":""}],"background":""}'
+        },
+        urls: {
+            autoSave: 'save/',
+            saveUrl: 'http://localhost:8080/saveUrl',
+            imageUploadUrl: 'http://localhost:8000/imageUpload',
+            uploadCartDesignUrl: 'http://localhost:8000/uploadCartDesign'
+        },
+        styles: [{
+            "some_id": "changetext",
+            "some_id2": "style options ex: width:500px;",
+            "some_id3": "style options ex: width:500px;"
+        }],
+        googleFontFamilies: [
+            'Ubuntu',
+            'Amatic SC'
+        ],
+        colors: [ 
+            '#000',
+            '#333',
+            '#666',
+            '#999',
+            '#AAA',
+            '#900',
+        ],
+        buildInImages: [
+            'static/images/svg/1.png',
+            'static/images/svg/1.svg',
+            'static/images/svg/2.svg',
+            'static/images/svg/3.svg',
+            'static/images/svg/4.svg',
+            'static/images/svg/5.svg',
+            'static/images/svg/6.svg',
+            'static/images/svg/7.svg',
+            'static/images/svg/8.svg',
+            'static/images/svg/9.svg',
+            'static/images/svg/10.svg'
+        ]
+
+    });
+    </script>
+</body>
+
+</html>
