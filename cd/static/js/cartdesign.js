@@ -7257,10 +7257,12 @@ var CardDesign = (function() {
         this.optionsBar = '<div class="option-area clearfix"><div class="content-area"><div class="options-left"><ul><li id="rotateFront"><button class="btn orange" title="Ön Yüz">Ön Yüz</button></li><li id="rotateBack"><button class="btn orange" title="Arka Yüz">Arka Yüz</button></li></ul></div><div class="options-right"><ul><li id="addText"><button title="Metin Ekle">Metin Ekle</button></li><li id="addShapes"><button title="Şekil Ekle">Şekil Ekle</button><ul id="shapeArea"><li><button id="addRectangle" title="Kare">Kare</button></li><li><button id="addCircle" title="Daire">Daire</button></li><li><button id="addTriangle" title="Üçgen">Üçgen</button></li><li><button id="addLine" title="Çizgi">Çizgi</button></li></ul></li><li id="AddImage"><button title="Resim Ekle">Resim Ekle</button></li></ul></div></div></div>';
         this.subOptionsBar = '<div class="sub-options"> <div class="content-area"> <div class="options-left"> <div id="globalOptions"> <ul> <li class="operations"> <select id="operations" class="slct"> <option value="" selected="">İşlemler</option> <option value="delete">Sil</option> <option value="cut">Kes</option> <option value="copy">Kopyala</option> <option value="paste">Yapıştır</option> <option value="addCopy">Kopyasını Ekle</option> <option value="moveToFront">En Öne Getir</option> <option value="moveToBack">En Arkaya Ekle</option> </select> </li><li id="copy-object" class="copy-object"><a class="icon" href="javascirpt:;"></a></li><li id="cut-object" class="cut-object"><a class="icon" href="javascirpt:;"></a></li><li id="paste-object" class="paste-object"><a class="icon" href="javascirpt:;"></a></li><li id="opacity"><input id="object-opacity" type="range" value="100"/></li><li id="delete" class="delete"><a class="icon" href="javascirpt:;"></a></li></ul> </div></div><div class="options-right"> <div id="textOptions"> <ul> <li class="family"> <select id="font-family" class="slct"> <option value="arial">Arial</option> <option value="helvetica" selected="">Helvetica</option> <option value="myriad pro">Myriad Pro</option> <option value="delicious">Delicious</option> <option value="verdana">Verdana</option> <option value="georgia">Georgia</option> <option value="courier">Courier</option> <option value="comic sans ms">Comic Sans MS</option> <option value="impact">Impact</option> <option value="monaco">Monaco</option> <option value="optima">Optima</option> <option value="hoefler text">Hoefler Text</option> <option value="plaster">Plaster</option> <option value="engagement">Engagement</option> </select> </li><li class="size"> <select id="font-size" class="slct"> <option value="10">10</option> <option value="12" selected="">12</option> <option value="14">14</option> <option value="16">16</option> <option value="18">18</option> <option value="24">24</option> <option value="36">36</option> <option value="48">48</option> <option value="72">72</option> <option value="120">120</option> <option value="150">150</option> <option value="180">180</option> <option value="200">200</option> <option value="250">250</option> </select> </li><li id="align-left" class="align-left"><a class="icon" href="javascirpt:;"></a></li><li id="align-center" class="align-center"><a class="icon" href="javascirpt:;"></a></li><li id="align-right" class="align-right"><a class="icon" href="javascirpt:;"></a></li><li id="text-bold" class="text-bold"><a class="icon" href="javascirpt:;"></a></li><li id="text-italic" class="text-italic"><a class="icon" href="javascirpt:;"></a></li><li id="text-underline" class="text-underline"><a class="icon" href="javascirpt:;"></a></li><li id="edit-text" class="edit-text"><a class="icon" href="javascirpt:;"></a></li></ul> </div><div id="colorArea"> <ul> <li id="color-area" class="color-area"> <a class="icon" href="javascirpt:;"></a> <ul id="color-palette"></ul> </li></ul> </div></div></div></div>';
         this.popup = '<div class="popup-content"> <div id="cardDesignPopup"> <span class="context">Metin Ekle</span> <textarea id="custom-text" placeholder="Metin Girin"></textarea> <div class="buttons"><button class="btn done" id="editCustomText">Düzenle</button><button class="btn done" id="addCustomText">Ekle</button><button class="btn warning" id="cancelAddCustomText">İptal</button></div></div><div id="cardDesignImagePopup"> <span class="context">Resim Ekle</span> <div id="svgContainer" class="images clearfix"></div><div class="buttons"><button class="btn done" id="addCustomImage">Ekle</button> </div> {imageUploadForm}</div><div id="previewPopup"><span class="context">Ön İzleme</span><div class="preview-image-area"><img src="" id="frontPreview"/><img src="" id="backPreview"/></div><div class="checkbox-area"><input type="checkbox" id="accept"/><span class="accept-text">Tasarımı Onaylıyorum.</span><span id="accept-result" class="accept-result"></span></div><div class="buttons"><button class="btn done" id="sendPreviewImage">Gönder</button><button class="btn warning" id="cancelPreviewImage">Düzenlemeye Devam Et</button></div></div></div>';
-        this.imageUploadForm = '<div id="upload-area"><span class="context">Resim Seç</span><div id="uploadbox" onClick="singleupload_input.click();" class="singleupload">Resim Yükle</div><input type="file" id="singleupload_input" style="display:none;" name="img" value=""/><div class="buttons"><button class="btn done" id="addSelectedImage">Ekle</button><button class="btn warning" id="cancelAddCustomImage">İptal</button></div></div>'
+        this.imageUploadForm = '<div id="upload-area"><span class="context">Resim Seç</span><form method="POST" name="form" id="imageUploadForm" enctype="multipart/form-data"> <input type="file" id="img" name="img"/> <div class="buttons"> <input type="submit" class="btn done" id="addSelectedImage" value="Ekle"/> <button class="btn warning" id="cancelAddCustomImage">İptal</button> </div></form></div>'
         this.endButtons = '<div class="endButtons"><ul><li id="preview"><button class="btn orange">Bitti Ön izlemeyi Gör</button></li></li></ul></div>';
+
         this.options = options;
         this.copyArray = [];
+
 
         if (!options.urls.saveUrl) {
             alert('Kayit servis urli girilmelidir!');
@@ -7292,6 +7294,7 @@ var CardDesign = (function() {
 
         this.front_canvas.on('mouse:over', function(e) {
             var rightClickMenu = document.getElementById("rightClickMenu");
+           
             if (rightClickMenu.style.display == "none") {
                 //self.front_canvas.setActiveObject(e.target);
                 //self.front_canvas.renderAll();
@@ -7307,10 +7310,14 @@ var CardDesign = (function() {
         });
 
         this.front_canvas.on('mouse:up', function(e) {
+            self.front_canvas.setActiveObject(e.target);
+            self.activateConsole();
             self.activateRightClick(e);
         });
 
         this.back_canvas.on('mouse:up', function(e) {
+            self.front_canvas.setActiveObject(e.target);
+            self.activateConsole();
             self.activateRightClick(e);
         });
 
@@ -7335,7 +7342,7 @@ var CardDesign = (function() {
 
         // Auto Save
 
-        setInterval(self.autoSave.bind(this), 30000);
+        setInterval(self.autoSave.bind(this), 40000);
     }
 
     var consoleActivation = function() {
@@ -7637,72 +7644,42 @@ var CardDesign = (function() {
     CardDesign.prototype.fileUploadInit = function() {
         var self = this;
         try {
-            (function($) {
-
-                $.fn.singleupload = function(options) {
-
-                    var $this = this;
-                    var inputfile = null;
-
-                    var settings = $.extend({
-                        action: '#',
-                        onSuccess: function(url, data) {},
-                        onError: function(code) {},
-                        OnProgress: function(loaded, total) {
-                            var percent = Math.round(loaded * 100 / total);
-                            $this.html(percent + '%');
-                        },
-                        name: 'img'
-                    }, options);
-
-                    $('#' + settings.inputId).bind('change', function() {
-                        $this.css('backgroundImage', 'none');
-                        var fd = new FormData();
-                        fd.append($('#' + settings.inputId).attr('name'), $('#' + settings.inputId).get(0).files[0]);
-
-                        var xhr = new XMLHttpRequest();
-                        xhr.addEventListener("load", function(ev) {
-                                $this.html('');
-                                var res = eval("(" + ev.target.responseText + ")");
-
-                                if (res.code != 0) {
-                                    settings.onError(res.code);
-                                    return;
-                                }
-                                var review = ('<img src="' + res.url + '" style="width:' + $this.width() + 'px;height:' + $this.height() + 'px;"/>');
-                                $this.append(review);
-                                settings.onSuccess(res.url, res.data);
-
-                            },
-                            false);
-                        xhr.upload.addEventListener("progress", function(ev) {
-                            settings.OnProgress(ev.loaded, ev.total);
-                        }, false);
-
-                        xhr.open("POST", settings.action, true);
-                        xhr.send(fd);
-
-                    });
-
-                    return this;
-                }
-
-
-            }(jQuery));
-
-
-
-            $('#uploadbox').singleupload({
-                action: self.options.urls.saveUrl, //action: 'do_upload.php'
-                inputId: 'singleupload_input',
-                onError: function(code) {
-                    console.debug('error code ' + res.code);
-                },
-                onSuccess: function(url, data) {
+            $('#imageUploadForm').on('submit', function(e) {
+                debugger;
+                e.preventDefault();
+                var data = new FormData($('form').get(0));
+                $.ajax({
+                    url: self.options.urls.imageUploadUrl,
+                    method: "POST",
+                    data: data,
+                    beforeSend: function(request) {
+                        var csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
+                        request.setRequestHeader("X-CSRFToken", csrfmiddlewaretoken);
+                    },
+                    success: function(data) {
+                        debugger;
                         console.log(data);
-                    }
-                    /*,onProgress: function(loaded, total) {} */
+                        var image = $('<img src="'+data.uploadedFile+'" />');
+                        $('#svgContainer').append(image);
+                        var input = $('#imageUploadForm input[type=file]');
+                        input.replaceWith(input.val('').clone(true));
+
+                        image.on('click', function() {
+                            debugger;
+                            var imagePopup = document.getElementById("cardDesignImagePopup");
+                            self.activateImage(imagePopup);
+                            $(this).addClass('active');
+                        });
+                    },
+                    error: function(data) {
+                        debugger;
+                        console.log(data);
+                    },
+                    processData: false,
+                    contentType: false
+                });
             });
+
         } catch (err) {
             setTimeout(self.fileUploadInit, 500);
         }
@@ -7761,12 +7738,7 @@ var CardDesign = (function() {
             self.showPopup("image");
         }
 
-        for (var i = 0; i < imagePopup.getElementsByTagName("img").length; i++) {
-            imagePopup.getElementsByTagName("img")[i].onclick = function() {
-                imagePopup.getElementsByClassName("active").length > 0 ? imagePopup.getElementsByClassName("active")[0].classList.remove("active") : "";
-                this.classList.add("active");
-            }
-        }
+        self.activateImage(imagePopup)
 
         addCustomImage.onclick = function() {
             var imageSrc = "";
@@ -7794,6 +7766,17 @@ var CardDesign = (function() {
             self.addLine();
         }
     }
+
+    CardDesign.prototype.activateImage = function( imagePopup ){
+        for (var i = 0; i < imagePopup.getElementsByTagName("img").length; i++) {
+            imagePopup.getElementsByTagName("img")[i].removeAttribute("class");
+            imagePopup.getElementsByTagName("img")[i].onclick = function() {
+                imagePopup.getElementsByClassName("active").length > 0 ? imagePopup.getElementsByClassName("active")[0].classList.remove("active") : "";
+                this.classList.add("active");
+            }
+        }
+    };
+
     var addOptions = function(obj, families) {
         if (!obj || (!families && families.length === 0)) {
             return;
@@ -7918,7 +7901,9 @@ var CardDesign = (function() {
             } else {
                 colorPalette.style.display = "none";
             }
+
         }
+
         for (var i = 0; i < colorPalette.getElementsByTagName("li").length; i++) {
             colorPalette.getElementsByTagName("li")[i].onclick = function() {
                 self.setFill(this.style.backgroundColor);
@@ -8010,12 +7995,15 @@ var CardDesign = (function() {
                 acceptResult.style.display = "none";
                 var imageUrlFront = self.rasterize("front");
                 var imageUrlBack = self.rasterize("back");
-                var imageUrls = {
+                var data = {
+                    'userId': self.options.userId,
+                    'orderId': self.options.orderId,
+                    'lineItemId': self.options.lineItemId,
                     "front": imageUrlFront,
                     "back": imageUrlBack
                 }
 
-                self.postData("POST", self.options.urls.uploadCartDesignUrl, imageUrls);
+                self.postData("POST", self.options.urls.uploadCartDesignUrl, data);
             } else {
                 acceptResult.innerHTML = "Lütfen tasarımı onaylayınız.";
                 acceptResult.style.display = "block";
@@ -8140,10 +8128,12 @@ var CardDesign = (function() {
         var object = fabric.util.object.clone(activeCanvas.getActiveObject());
         this.copyArray[0] = object;
     }
+
     CardDesign.prototype.cutObject = function() {
         this.copyObject();
         this.removeSelected();
     }
+
     CardDesign.prototype.pasteObject = function() {
         var activeCanvas = this.getActiveCanvas();
         var object = this.copyArray[0];
@@ -8230,14 +8220,15 @@ var CardDesign = (function() {
     };
 
     CardDesign.prototype.setConsoleJSON = function(frontValue, backValue) {
-        var jsons = {
-            "frontJson": frontValue,
-            "backJson": backValue
+        var data = {
+            'userId': this.options.userId,
+            'orderId': this.options.orderId,
+            'lineItemId': this.options.lineItemId,
+            "front": frontValue,
+            "back": backValue
         }
-        return jsons;
+        return data;
     };
-
-
 
     function getRandomLeftTop() {
         var offset = 50;
@@ -8317,18 +8308,16 @@ var CardDesign = (function() {
     }
 
     CardDesign.prototype.postData = function(type, url, data) {
+        data.csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
         $.ajax({
-            type: type,
             url: url,
+            type: type,
             data: data,
-            beforeSend: function(xhr) {
-                var csrfInput = $("input[name=csrfmiddlewaretoken]");
-                if (csrfInput) {
-                    xhr.setRequestHeader("X-CSRFToken", csrfInput.val());
-                }
+            success: function(json) {
+                console.log(json.server_response);
             },
-            success: function(data) {
-                console.log("Data has been sent");
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
             }
         });
     }
@@ -8340,8 +8329,9 @@ var CardDesign = (function() {
 
     CardDesign.prototype.autoSave = function() {
         var self = this;
-        var json = self.rasterizeJSON();
-        this.postData("POST", self.options.urls.autoSave, json);
+        var data = self.rasterizeJSON();
+
+        this.postData("POST", self.options.urls.autoSave, data);
     }
 
     return CardDesign;
